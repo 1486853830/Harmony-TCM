@@ -1,0 +1,263 @@
+/* ========================================
+   Contact Page Styles - Social Cards Only
+   ======================================== */
+
+.contact-section {
+    padding: 140px 40px 80px;
+    min-height: calc(100vh - 200px);
+    position: relative;
+    background: linear-gradient(135deg, rgba(10, 10, 20, 0.95) 0%, rgba(20, 20, 40, 0.95) 100%);
+}
+
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.contact-header .section-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 30px;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.contact-title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.contact-title .accent {
+    color: var(--color-accent);
+}
+
+.contact-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Social Grid */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+/* Social Card */
+.social-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+    background: var(--gradient-card);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+}
+
+.social-card:hover::before {
+    opacity: 1;
+}
+
+/* Platform-specific colors on hover */
+.social-card.wechat:hover {
+    border-color: #07C160;
+    box-shadow: 0 15px 40px rgba(7, 193, 96, 0.2);
+}
+
+.social-card.email:hover {
+    border-color: #EA4335;
+    box-shadow: 0 15px 40px rgba(234, 67, 53, 0.2);
+}
+
+.social-card.twitter:hover {
+    border-color: #1DA1F2;
+    box-shadow: 0 15px 40px rgba(29, 161, 242, 0.2);
+}
+
+.social-card.tiktok:hover {
+    border-color: #FF0050;
+    box-shadow: 0 15px 40px rgba(255, 0, 80, 0.2);
+}
+
+.social-card.youtube:hover {
+    border-color: #FF0000;
+    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.2);
+}
+
+.social-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition-smooth);
+}
+
+.social-card.wechat .social-icon {
+    background: rgba(7, 193, 96, 0.1);
+    color: #07C160;
+}
+
+.social-card.email .social-icon {
+    background: rgba(234, 67, 53, 0.1);
+    color: #EA4335;
+}
+
+.social-card.twitter .social-icon {
+    background: rgba(29, 161, 242, 0.1);
+    color: #1DA1F2;
+}
+
+.social-card.tiktok .social-icon {
+    background: rgba(255, 0, 80, 0.1);
+    color: #FF0050;
+}
+
+.social-card.youtube .social-icon {
+    background: rgba(255, 0, 0, 0.1);
+    color: #FF0000;
+}
+
+.social-icon svg {
+    width: 35px;
+    height: 35px;
+}
+
+.social-info {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.social-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.social-handle {
+    font-size: 1rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.social-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.social-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.social-arrow svg {
+    width: 20px;
+    height: 20px;
+}
+
+.social-card:hover .social-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Contact Footer */
+.contact-footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--gradient-card);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+}
+
+.contact-footer p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 100px 20px 60px;
+    }
+    
+    .contact-title {
+        font-size: 2.5rem;
+    }
+    
+    .social-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-card {
+        padding: 25px;
+    }
+    
+    .social-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .social-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .social-arrow {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

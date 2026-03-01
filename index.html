@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony TCM Wellness | Traditional Chinese Medicine Modernized</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Noto+Serif+SC:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/component-loader.js"></script>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-canvas"></div>
+    
+    <!-- Navigation Component -->
+    <div data-component="navbar"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">✦ Ancient Wisdom, Modern Life ✦</div>
+            <h1 class="hero-title">
+                <span class="title-line">Discover the Art of</span>
+                <span class="title-line highlight">Chinese Wellness</span>
+            </h1>
+            <p class="hero-subtitle">Experience 5,000 years of healing wisdom through our modern TCM-inspired products and practices</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Explore Products</a>
+                <a href="diagnosis.html" class="btn btn-secondary">AI Diagnosis</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">Years of Wisdom</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Natural Ingredients</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="yin-yang-container">
+                <div class="yin-yang">
+                    <div class="yin"></div>
+                    <div class="yang"></div>
+                    <div class="dot dot-yin"></div>
+                    <div class="dot dot-yang"></div>
+                </div>
+                <div class="orbit-ring ring-1"></div>
+                <div class="orbit-ring ring-2"></div>
+                <div class="orbit-ring ring-3"></div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="section-header">
+            <span class="section-tag">Our Offerings</span>
+            <h2 class="section-title">Wellness <span class="accent">Redefined</span></h2>
+            <p class="section-desc">Ancient remedies meet modern lifestyle</p>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Herbal Milk Tea -->
+            <div class="product-card featured" data-product="tea">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 8C32 8 20 16 20 28C20 36 26 44 32 52C38 44 44 36 44 28C44 16 32 8 32 8Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M32 20V36" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="32" cy="28" r="2" fill="currentColor"/>
+                            <path d="M24 56H40" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Herbal Milk Tea</h3>
+                    <p class="card-subtitle">中药奶茶</p>
+                    <p class="card-desc">Premium milk tea infused with traditional Chinese herbs like goji berries, chrysanthemum, and astragalus. Nourishing and delicious.</p>
+                    <ul class="card-features">
+                        <li>✦ Boosts immunity</li>
+                        <li>✦ Enhances vitality</li>
+                        <li>✦ Natural sweetness</li>
+                    </ul>
+                    <a href="#" class="card-link">Discover Flavors →</a>
+                </div>
+                <div class="card-visual">
+                    <div class="tea-cup">
+                        <div class="cup-body"></div>
+                        <div class="cup-handle"></div>
+                        <div class="steam steam-1"></div>
+                        <div class="steam steam-2"></div>
+                        <div class="steam steam-3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medicinal Cuisine -->
+            <div class="product-card" data-product="cuisine">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="32" cy="40" rx="20" ry="8" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 40C12 32 20 24 32 24C44 24 52 32 52 40" stroke="currentColor" stroke-width="2"/>
+                            <path d="M32 24V16" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="32" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 32L28 36M40 32L36 36" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Medicinal Cuisine</h3>
+                    <p class="card-subtitle">药膳养生</p>
+                    <p class="card-desc">Healing meals crafted according to TCM principles. Food as medicine, balancing Yin and Yang through every bite.</p>
+                    <ul class="card-features">
+                        <li>✦ Personalized menus</li>
+                        <li>✦ Seasonal ingredients</li>
+                        <li>✦ Chef-crafted recipes</li>
+                    </ul>
+                    <a href="#" class="card-link">View Menu →</a>
+                </div>
+                <div class="card-visual">
+                    <div class="bowl-container">
+                        <div class="bowl">
+                            <div class="bowl-content"></div>
+                        </div>
+                        <div class="chopsticks">
+                            <div class="chopstick"></div>
+                            <div class="chopstick"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TCM Therapy -->
+            <div class="product-card" data-product="therapy">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="2"/>
+                            <path d="M32 16V48" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 32H48" stroke="currentColor" stroke-width="2"/>
+                            <path d="M21 21L43 43" stroke="currentColor" stroke-width="2"/>
+                            <path d="M43 21L21 43" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="32" cy="32" r="6" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">TCM Therapy</h3>
+                    <p class="card-subtitle">中医调理</p>
+                    <p class="card-desc">Professional Traditional Chinese Medicine treatments including acupuncture, cupping, and herbal consultations for holistic healing.</p>
+                    <ul class="card-features">
+                        <li>✦ Licensed practitioners</li>
+                        <li>✦ Personalized treatments</li>
+                        <li>✦ Natural healing methods</li>
+                    </ul>
+                    <a href="#" class="card-link">Book Session →</a>
+                </div>
+                <div class="card-visual">
+                    <div class="therapy-icon">
+                        <div class="acupuncture-needle needle-1"></div>
+                        <div class="acupuncture-needle needle-2"></div>
+                        <div class="acupuncture-needle needle-3"></div>
+                        <div class="meridian-circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="wellness" class="philosophy">
+        <div class="philosophy-container">
+            <div class="philosophy-content">
+                <span class="section-tag">Our Philosophy</span>
+                <h2 class="section-title">The Five Elements <span class="accent">Balance</span></h2>
+                <p class="philosophy-text">Traditional Chinese Medicine teaches that health is achieved through balance. Our products and services are designed to harmonize the Five Elements within your body.</p>
+                
+                <div class="elements-grid">
+                    <div class="element-item" data-element="wood">
+                        <div class="element-icon wood">🌿</div>
+                        <div class="element-info">
+                            <h4>Wood</h4>
+                            <p>Growth & Vitality</p>
+                        </div>
+                    </div>
+                    <div class="element-item" data-element="fire">
+                        <div class="element-icon fire">🔥</div>
+                        <div class="element-info">
+                            <h4>Fire</h4>
+                            <p>Energy & Passion</p>
+                        </div>
+                    </div>
+                    <div class="element-item" data-element="earth">
+                        <div class="element-icon earth">🏔️</div>
+                        <div class="element-info">
+                            <h4>Earth</h4>
+                            <p>Stability & Nourishment</p>
+                        </div>
+                    </div>
+                    <div class="element-item" data-element="metal">
+                        <div class="element-icon metal">⚜️</div>
+                        <div class="element-info">
+                            <h4>Metal</h4>
+                            <p>Clarity & Strength</p>
+                        </div>
+                    </div>
+                    <div class="element-item" data-element="water">
+                        <div class="element-icon water">💧</div>
+                        <div class="element-info">
+                            <h4>Water</h4>
+                            <p>Wisdom & Flow</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="philosophy-visual">
+                <div class="five-elements-diagram">
+                    <div class="center-circle">☯</div>
+                    <div class="element-node wood-node">木</div>
+                    <div class="element-node fire-node">火</div>
+                    <div class="element-node earth-node">土</div>
+                    <div class="element-node metal-node">金</div>
+                    <div class="element-node water-node">水</div>
+                    <svg class="connections" viewBox="0 0 300 300">
+                        <path class="connection-line" d="M150 50 L220 110" stroke="currentColor" stroke-width="1" fill="none"/>
+                        <path class="connection-line" d="M220 110 L190 200" stroke="currentColor" stroke-width="1" fill="none"/>
+                        <path class="connection-line" d="M190 200 L110 200" stroke="currentColor" stroke-width="1" fill="none"/>
+                        <path class="connection-line" d="M110 200 L80 110" stroke="currentColor" stroke-width="1" fill="none"/>
+                        <path class="connection-line" d="M80 110 L150 50" stroke="currentColor" stroke-width="1" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TCM Therapy Showcase Section -->
+    <section id="therapy" class="therapy-showcase">
+        <div class="showcase-header">
+            <span class="section-tag">Heal with Tradition</span>
+            <h2 class="section-title">TCM <span class="accent">Therapy</span></h2>
+            <p class="section-desc">Ancient healing arts for modern wellness</p>
+        </div>
+        
+        <div class="showcase-content">
+            <div class="showcase-features">
+                <div class="feature-block">
+                    <div class="feature-number">01</div>
+                    <h3>Acupuncture</h3>
+                    <p>Precision needle therapy to restore energy flow and relieve pain through ancient meridian techniques</p>
+                </div>
+                <div class="feature-block">
+                    <div class="feature-number">02</div>
+                    <h3>Cupping Therapy</h3>
+                    <p>Traditional suction therapy to improve circulation, detoxify, and promote deep muscle relaxation</p>
+                </div>
+                <div class="feature-block">
+                    <div class="feature-number">03</div>
+                    <h3>Herbal Consultation</h3>
+                    <p>Personalized herbal prescriptions based on your unique body constitution and health needs</p>
+                </div>
+            </div>
+            <div class="showcase-visual">
+                <div class="therapy-animation">
+                    <div class="meridian-lines">
+                        <div class="meridian m-1"></div>
+                        <div class="meridian m-2"></div>
+                        <div class="meridian m-3"></div>
+                        <div class="meridian m-4"></div>
+                    </div>
+                    <div class="acupuncture-points">
+                        <div class="point p-1"></div>
+                        <div class="point p-2"></div>
+                        <div class="point p-3"></div>
+                        <div class="point p-4"></div>
+                        <div class="point p-5"></div>
+                    </div>
+                    <div class="energy-flow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-header">
+            <span class="section-tag">Testimonials</span>
+            <h2 class="section-title">Voices of <span class="accent">Harmony</span></h2>
+        </div>
+        <div class="testimonials-slider">
+            <div class="testimonial-card active">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">The herbal milk tea is not just delicious—it's become my daily wellness ritual. I feel more energized and balanced.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">S</div>
+                    <div class="author-info">
+                        <h4>陈将军</h4>
+                        <span>Wellness Enthusiast</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">Joining the square dance group has transformed my mornings. The community is wonderful and I feel healthier than ever.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info">
+                        <h4>Michael Wong</h4>
+                        <span>Dance Member</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">The medicinal cuisine program helped me understand food as medicine. My digestion and energy levels have improved dramatically.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">E</div>
+                    <div class="author-info">
+                        <h4>Emma Liu</h4>
+                        <span>Health Coach</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2>Begin Your Wellness Journey</h2>
+                <p>Join our community and discover the transformative power of Traditional Chinese Medicine</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary btn-large">Get Started</a>
+                    <a href="#" class="btn btn-outline btn-large">Learn More</a>
+                </div>
+            </div>
+            <div class="cta-decoration">
+                <div class="floating-element fe-1">☯</div>
+                <div class="floating-element fe-2">✦</div>
+                <div class="floating-element fe-3">❋</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <div data-component="footer"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

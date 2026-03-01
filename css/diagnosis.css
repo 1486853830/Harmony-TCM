@@ -1,0 +1,422 @@
+/* ========================================
+   AI Medical Diagnosis Page Styles
+   ======================================== */
+
+.diagnosis-section {
+    padding: 120px 40px;
+    min-height: calc(100vh - 200px);
+    position: relative;
+}
+
+.diagnosis-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.diagnosis-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.diagnosis-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.diagnosis-title .accent {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.diagnosis-subtitle {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.diagnosis-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Upload Area */
+.upload-area {
+    background: var(--gradient-card);
+    border: 2px dashed rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-area:hover {
+    border-color: var(--color-accent);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.upload-area.drag-over {
+    border-color: var(--color-accent);
+    background: rgba(212, 175, 55, 0.1);
+    transform: scale(1.02);
+}
+
+.upload-content {
+    position: relative;
+    z-index: 2;
+}
+
+.upload-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    color: var(--color-accent);
+}
+
+.upload-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.upload-area h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.upload-area p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.upload-hint {
+    font-size: 0.85rem;
+    margin-top: 15px;
+    color: rgba(212, 175, 55, 0.6);
+}
+
+/* Image Preview */
+.image-preview {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--color-accent);
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: var(--color-bg-secondary);
+}
+
+.remove-image {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(196, 30, 58, 0.9);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: var(--transition-smooth);
+}
+
+.remove-image:hover {
+    background: var(--color-red);
+    transform: scale(1.1);
+}
+
+.remove-image svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Text Input Area */
+.text-input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.text-input-area label {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.text-input-area textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: vertical;
+    transition: var(--transition-smooth);
+}
+
+.text-input-area textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.text-input-area textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+.input-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+/* Result Section */
+.result-section {
+    background: var(--gradient-card);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.result-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+}
+
+.result-header h2 .accent {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+.status-icon {
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+}
+
+.status-text {
+    font-weight: 600;
+}
+
+/* Thinking Process */
+.thinking-process {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 10px 10px 0;
+}
+
+.thinking-process h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--color-accent);
+}
+
+.thinking-content {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+/* Diagnosis Result */
+.diagnosis-result {
+    min-height: 200px;
+    margin-bottom: 30px;
+}
+
+.result-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    height: 200px;
+    color: var(--color-text-muted);
+}
+
+.placeholder-icon {
+    font-size: 3rem;
+    opacity: 0.5;
+}
+
+.result-content-text {
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.result-content-text p {
+    margin-bottom: 15px;
+}
+
+.result-content-text strong {
+    color: var(--color-accent);
+}
+
+/* Result Actions */
+.result-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.result-actions .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.result-actions .btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Button Loader */
+.btn-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-loader svg {
+    width: 20px;
+    height: 20px;
+    animation: rotate 1s linear infinite;
+}
+
+/* Disclaimer */
+.disclaimer {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    background: rgba(196, 30, 58, 0.1);
+    border: 1px solid rgba(196, 30, 58, 0.3);
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.disclaimer-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.disclaimer-content h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--color-red);
+}
+
+.disclaimer-content p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .diagnosis-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .diagnosis-section {
+        padding: 80px 20px;
+    }
+    
+    .upload-area {
+        padding: 40px 20px;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+    }
+    
+    .disclaimer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}

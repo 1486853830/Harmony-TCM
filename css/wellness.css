@@ -1,0 +1,556 @@
+/* ========================================
+   Wellness Page Styles
+   ======================================== */
+
+/* Hero Section */
+.wellness-hero {
+    padding: 160px 40px 100px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(10, 10, 20, 0.95) 0%, rgba(20, 20, 40, 0.95) 100%);
+    position: relative;
+}
+
+.wellness-hero .section-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 30px;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.hero-title .accent {
+    color: var(--color-accent);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.section-header h2 .accent {
+    color: var(--color-accent);
+}
+
+.section-intro {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Core Principles */
+.core-principles {
+    padding: 100px 0;
+    background: var(--color-bg-primary);
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.principle-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 20px;
+    padding: 40px 30px;
+    transition: var(--transition-smooth);
+}
+
+.principle-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-accent);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+}
+
+.principle-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.principle-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--color-text);
+}
+
+.principle-card p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.principle-example {
+    padding: 15px;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 10px;
+    border-left: 3px solid var(--color-accent);
+}
+
+.example-label {
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-right: 10px;
+}
+
+/* Body Types */
+.body-types {
+    padding: 100px 0;
+    background: linear-gradient(135deg, rgba(10, 10, 20, 0.98) 0%, rgba(20, 20, 40, 0.98) 100%);
+}
+
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.type-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.type-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-accent);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+}
+
+.type-header {
+    padding: 30px;
+    text-align: center;
+    background: rgba(212, 175, 55, 0.05);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.type-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.type-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--color-text);
+}
+
+.type-content {
+    padding: 25px;
+}
+
+.type-traits,
+.type-recommendations {
+    margin-bottom: 20px;
+}
+
+.type-traits h4,
+.type-recommendations h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: var(--color-text);
+}
+
+.type-traits ul,
+.type-recommendations ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.type-traits li,
+.type-recommendations li {
+    padding-left: 20px;
+    position: relative;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.type-traits li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+}
+
+.type-recommendations li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+}
+
+/* Daily Routine */
+.daily-routine {
+    padding: 100px 0;
+    background: var(--color-bg-primary);
+}
+
+.routine-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.routine-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 30px;
+    background: var(--gradient-card);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 15px;
+    padding: 30px;
+    transition: var(--transition-smooth);
+}
+
+.routine-item:hover {
+    border-color: var(--color-accent);
+    transform: translateX(10px);
+}
+
+.routine-time {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.routine-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--color-text);
+}
+
+.routine-content p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.routine-tips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tip {
+    padding: 6px 14px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 20px;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+}
+
+/* Seasonal Wellness */
+.seasonal-wellness {
+    padding: 100px 0;
+    background: linear-gradient(135deg, rgba(10, 10, 20, 0.98) 0%, rgba(20, 20, 40, 0.98) 100%);
+}
+
+.seasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.season-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.season-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+}
+
+.season-card.spring:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 20px 40px rgba(76, 175, 80, 0.2);
+}
+
+.season-card.summer:hover {
+    border-color: #FF5722;
+    box-shadow: 0 20px 40px rgba(255, 87, 34, 0.2);
+}
+
+.season-card.autumn:hover {
+    border-color: #FF9800;
+    box-shadow: 0 20px 40px rgba(255, 152, 0, 0.2);
+}
+
+.season-card.winter:hover {
+    border-color: #2196F3;
+    box-shadow: 0 20px 40px rgba(33, 150, 243, 0.2);
+}
+
+.season-icon {
+    font-size: 3rem;
+    text-align: center;
+    padding: 30px;
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.season-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: var(--color-text);
+    text-align: center;
+    padding: 0 20px;
+}
+
+.season-subtitle {
+    text-align: center;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.season-content {
+    padding: 20px;
+}
+
+.season-content h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--color-text);
+}
+
+.season-content p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.season-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.season-content li {
+    padding-left: 20px;
+    position: relative;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.season-content li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+}
+
+/* Wellness Tips */
+.wellness-tips {
+    padding: 100px 0;
+    background: var(--color-bg-primary);
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.tip-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 20px;
+    padding: 35px 30px;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.tip-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-accent);
+}
+
+.tip-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: rgba(212, 175, 55, 0.2);
+    font-weight: 800;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+}
+
+.tip-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--color-text);
+}
+
+.tip-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* CTA Section */
+.wellness-cta {
+    padding: 100px 40px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(196, 30, 58, 0.1) 100%);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.wellness-cta h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.wellness-cta h2 .accent {
+    color: var(--color-accent);
+}
+
+.wellness-cta p {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+    min-width: 200px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .types-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .seasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .principles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .wellness-hero {
+        padding: 120px 20px 60px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    .types-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .seasons-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .routine-item {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .routine-time {
+        justify-content: center;
+    }
+    
+    .routine-content {
+        text-align: center;
+    }
+    
+    .routine-tips {
+        justify-content: center;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}

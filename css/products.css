@@ -86,12 +86,13 @@
 
 /* Products Grid */
 .products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-/* Product Card */
 .product-card {
     background: var(--gradient-card);
     border: 1px solid rgba(212, 175, 55, 0.15);
@@ -99,24 +100,24 @@
     overflow: hidden;
     transition: var(--transition-smooth);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .product-card:hover {
-    transform: translateY(-10px);
     border-color: var(--color-accent);
-    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
 }
 
-/* Product Image */
 .product-image {
     position: relative;
-    height: 200px;
+    min-width: 280px;
+    width: 280px;
     background: rgba(212, 175, 55, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .image-placeholder {
@@ -129,7 +130,7 @@
 }
 
 .product-icon {
-    font-size: 4rem;
+    font-size: 5rem;
     opacity: 0.6;
     transition: var(--transition-smooth);
 }
@@ -139,11 +140,10 @@
     opacity: 0.8;
 }
 
-/* Product Badge */
 .product-badge {
     position: absolute;
     top: 15px;
-    right: 15px;
+    left: 15px;
     padding: 6px 14px;
     background: var(--gradient-gold);
     border-radius: 20px;
@@ -154,9 +154,8 @@
     letter-spacing: 1px;
 }
 
-/* Product Info */
 .product-info {
-    padding: 25px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -164,13 +163,13 @@
 
 .product-info h3 {
     font-family: var(--font-display);
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 8px;
     color: var(--color-text);
 }
 
 .product-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-accent);
     margin-bottom: 15px;
     font-style: italic;
@@ -403,7 +402,7 @@
 /* Responsive Design */
 @media (max-width: 1200px) {
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
     }
     
     .features-grid {
@@ -414,6 +413,16 @@
 @media (max-width: 992px) {
     .testimonials-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .product-card {
+        flex-direction: column;
+    }
+    
+    .product-image {
+        min-width: 100%;
+        width: 100%;
+        height: 200px;
     }
 }
 
@@ -428,10 +437,6 @@
     
     .container {
         padding: 0 20px;
-    }
-    
-    .products-grid {
-        grid-template-columns: 1fr;
     }
     
     .features-grid {

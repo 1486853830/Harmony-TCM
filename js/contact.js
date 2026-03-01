@@ -3,12 +3,6 @@
 // ========================================
 
 document.addEventListener('componentsLoaded', function() {
-    if (typeof initParticles === 'function') {
-        initParticles();
-    }
-    if (typeof initNavigation === 'function') {
-        initNavigation();
-    }
     initSocialLinks();
 });
 

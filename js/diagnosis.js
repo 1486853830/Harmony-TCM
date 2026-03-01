@@ -36,14 +36,6 @@ const shareBtn = document.getElementById('shareBtn');
 // Initialize
 document.addEventListener('componentsLoaded', function() {
     initEventListeners();
-    // initParticles and initNavigation are defined in script.js
-    // They will be called if the script is loaded
-    if (typeof initParticles === 'function') {
-        initParticles();
-    }
-    if (typeof initNavigation === 'function') {
-        initNavigation();
-    }
 });
 
 // Event Listeners

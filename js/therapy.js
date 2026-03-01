@@ -3,17 +3,10 @@
 // ========================================
 
 document.addEventListener('componentsLoaded', function() {
-    if (typeof initParticles === 'function') {
-        initParticles();
-    }
-    if (typeof initNavigation === 'function') {
-        initNavigation();
-    }
-    initScrollAnimations();
+    initTherapyAnimations();
 });
 
-// Initialize scroll animations
-function initScrollAnimations() {
+function initTherapyAnimations() {
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'

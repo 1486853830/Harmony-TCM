@@ -3,18 +3,11 @@
 // ========================================
 
 document.addEventListener('componentsLoaded', function() {
-    if (typeof initParticles === 'function') {
-        initParticles();
-    }
-    if (typeof initNavigation === 'function') {
-        initNavigation();
-    }
-    initScrollAnimations();
+    initWellnessAnimations();
     initBodyTypeQuiz();
 });
 
-// Initialize scroll animations
-function initScrollAnimations() {
+function initWellnessAnimations() {
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'

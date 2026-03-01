@@ -2,15 +2,28 @@
 // Harmony TCM Wellness - Interactive Script
 // ========================================
 
-document.addEventListener('componentsLoaded', function() {
-    // Initialize all components after they are loaded
+let componentsReady = false;
+
+function initAll() {
+    if (componentsReady) return;
+    componentsReady = true;
+    
     initParticles();
     initNavigation();
     initScrollAnimations();
     initTestimonials();
     initElementInteractions();
     initParallax();
-});
+    initPageTransitions();
+}
+
+document.addEventListener('componentsLoaded', initAll);
+
+setTimeout(() => {
+    if (!componentsReady && document.querySelector('.navbar')) {
+        initAll();
+    }
+}, 100);
 
 // ========================================
 // Particle System
@@ -24,9 +37,8 @@ function initParticles() {
     let animationId;
     let isActive = true;
     
-    // Check for touch device - reduce particles on mobile
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-    const particleCount = isTouchDevice ? 15 : 30;
+    const particleCount = isTouchDevice ? 40 : 80;
     
     function resize() {
         canvas.width = window.innerWidth;
@@ -44,10 +56,10 @@ function initParticles() {
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 0.3;
-            this.speedY = (Math.random() - 0.5) * 0.3;
-            this.opacity = Math.random() * 0.5 + 0.1;
+            this.size = Math.random() * 2.5 + 0.8;
+            this.speedX = (Math.random() - 0.5) * 0.8;
+            this.speedY = (Math.random() - 0.5) * 0.8;
+            this.opacity = Math.random() * 0.6 + 0.2;
             this.growing = Math.random() > 0.5;
         }
         
@@ -55,19 +67,17 @@ function initParticles() {
             this.x += this.speedX;
             this.y += this.speedY;
             
-            // Wrap around screen
             if (this.x < 0) this.x = canvas.width;
             if (this.x > canvas.width) this.x = 0;
             if (this.y < 0) this.y = canvas.height;
             if (this.y > canvas.height) this.y = 0;
             
-            // Pulse size
             if (this.growing) {
-                this.size += 0.01;
-                if (this.size > 3) this.growing = false;
+                this.size += 0.02;
+                if (this.size > 4) this.growing = false;
             } else {
-                this.size -= 0.01;
-                if (this.size < 0.5) this.growing = true;
+                this.size -= 0.02;
+                if (this.size < 0.8) this.growing = true;
             }
         }
         
@@ -79,15 +89,13 @@ function initParticles() {
         }
     }
     
-    // Initialize particles
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
     }
     
-    // Draw connections between nearby particles
     function drawConnections() {
-        const maxDistance = 100;
-        const maxConnections = 3;
+        const maxDistance = 180;
+        const maxConnections = 5;
         
         for (let i = 0; i < particles.length; i++) {
             let connections = 0;
@@ -100,12 +108,12 @@ function initParticles() {
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
                 if (distance < maxDistance) {
-                    const opacity = (1 - distance / maxDistance) * 0.2;
+                    const opacity = (1 - distance / maxDistance) * 0.25;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
                     ctx.strokeStyle = `rgba(212, 175, 55, ${opacity})`;
-                    ctx.lineWidth = 0.5;
+                    ctx.lineWidth = 0.6;
                     ctx.stroke();
                     connections++;
                 }
@@ -113,22 +121,17 @@ function initParticles() {
         }
     }
     
-    let frameCount = 0;
     function animate() {
         if (!isActive) return;
         
-        frameCount++;
-        // Render every 2nd frame for performance (30fps)
-        if (frameCount % 2 === 0) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-            
-            drawConnections();
-        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+        
+        drawConnections();
         
         animationId = requestAnimationFrame(animate);
     }
@@ -195,13 +198,45 @@ function initNavigation() {
         });
     });
     
-    // Mobile menu toggle
-    if (navToggle) {
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-    }
+    // Mobile menu toggle - using event delegation for dynamically loaded components
+    document.addEventListener('click', (e) => {
+        // Handle nav toggle click
+        if (e.target.closest('.nav-toggle')) {
+            const navToggleBtn = document.querySelector('.nav-toggle');
+            const navLinksEl = document.querySelector('.nav-links');
+            if (navToggleBtn && navLinksEl) {
+                navToggleBtn.classList.toggle('active');
+                navLinksEl.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
+            }
+            return;
+        }
+        
+        // Handle nav link click - close menu on mobile
+        if (e.target.closest('.nav-links a')) {
+            if (window.innerWidth <= 768) {
+                const navToggleBtn = document.querySelector('.nav-toggle');
+                const navLinksEl = document.querySelector('.nav-links');
+                if (navToggleBtn && navLinksEl) {
+                    navToggleBtn.classList.remove('active');
+                    navLinksEl.classList.remove('active');
+                    document.body.classList.remove('nav-open');
+                }
+            }
+            return;
+        }
+        
+        // Close mobile menu when clicking outside
+        const navLinksEl = document.querySelector('.nav-links');
+        const navToggleBtn = document.querySelector('.nav-toggle');
+        if (navLinksEl && navLinksEl.classList.contains('active')) {
+            if (!navLinksEl.contains(e.target) && navToggleBtn && !navToggleBtn.contains(e.target)) {
+                navToggleBtn.classList.remove('active');
+                navLinksEl.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            }
+        }
+    });
     
     // Update active nav link on scroll
     const sections = document.querySelectorAll('section[id]');
@@ -228,6 +263,12 @@ function initNavigation() {
 // Scroll Animations
 // ========================================
 function initScrollAnimations() {
+    const animateElements = document.querySelectorAll(
+        '.product-card, .element-item, .feature-block, .section-header, .philosophy-content'
+    );
+    
+    if (animateElements.length === 0) return;
+    
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -242,11 +283,6 @@ function initScrollAnimations() {
         });
     }, observerOptions);
     
-    // Observe elements for animation
-    const animateElements = document.querySelectorAll(
-        '.product-card, .element-item, .feature-block, .section-header, .philosophy-content'
-    );
-    
     animateElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -254,7 +290,6 @@ function initScrollAnimations() {
         observer.observe(el);
     });
     
-    // Add CSS for animate-in class
     const style = document.createElement('style');
     style.textContent = `
         .animate-in {
@@ -271,17 +306,20 @@ function initScrollAnimations() {
 function initTestimonials() {
     const cards = document.querySelectorAll('.testimonial-card');
     const dots = document.querySelectorAll('.testimonial-dots .dot');
+    
+    if (cards.length === 0 || dots.length === 0) return;
+    
     let currentIndex = 0;
     let intervalId;
     
     function showTestimonial(index) {
         cards.forEach((card, i) => {
             card.classList.remove('active');
-            dots[i].classList.remove('active');
+            if (dots[i]) dots[i].classList.remove('active');
         });
         
         cards[index].classList.add('active');
-        dots[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
         currentIndex = index;
     }
     
@@ -290,7 +328,6 @@ function initTestimonials() {
         showTestimonial(nextIndex);
     }
     
-    // Dot click handlers
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             showTestimonial(index);
@@ -298,7 +335,6 @@ function initTestimonials() {
         });
     });
     
-    // Auto-advance
     function startInterval() {
         intervalId = setInterval(nextTestimonial, 5000);
     }
@@ -310,7 +346,6 @@ function initTestimonials() {
     
     startInterval();
     
-    // Pause on hover
     const slider = document.querySelector('.testimonials-slider');
     if (slider) {
         slider.addEventListener('mouseenter', () => clearInterval(intervalId));
@@ -325,6 +360,8 @@ function initElementInteractions() {
     const elementItems = document.querySelectorAll('.element-item');
     const elementNodes = document.querySelectorAll('.element-node');
     
+    if (elementItems.length === 0) return;
+    
     const elementData = {
         wood: { color: '#4CAF50', name: 'Wood' },
         fire: { color: '#F44336', name: 'Fire' },
@@ -337,7 +374,6 @@ function initElementInteractions() {
         const element = item.dataset.element;
         
         item.addEventListener('mouseenter', () => {
-            // Highlight corresponding node in diagram
             elementNodes.forEach(node => {
                 if (node.classList.contains(`${element}-node`)) {
                     node.style.background = elementData[element].color;
@@ -491,3 +527,47 @@ rippleStyle.textContent = `
     }
 `;
 document.head.appendChild(rippleStyle);
+
+// ========================================
+// Page Transitions
+// ========================================
+function initPageTransitions() {
+    const overlay = document.createElement('div');
+    overlay.className = 'page-transition-overlay';
+    document.body.appendChild(overlay);
+    
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        
+        if (href && 
+            !href.startsWith('#') && 
+            !href.startsWith('http') && 
+            !href.startsWith('mailto:') && 
+            !href.startsWith('tel:') &&
+            href.endsWith('.html')) {
+            
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                document.body.classList.add('page-leaving');
+                overlay.classList.add('active');
+                
+                setTimeout(() => {
+                    sessionStorage.setItem('pageTransition', 'entering');
+                    window.location.href = href;
+                }, 400);
+            });
+        }
+    });
+    
+    if (sessionStorage.getItem('pageTransition') === 'entering') {
+        sessionStorage.removeItem('pageTransition');
+        overlay.classList.add('active');
+        
+        requestAnimationFrame(() => {
+            overlay.classList.remove('active');
+        });
+    }
+}
+
+document.addEventListener('componentsLoaded', initPageTransitions);

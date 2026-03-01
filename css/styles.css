@@ -57,6 +57,53 @@ body {
     overflow-x: hidden;
 }
 
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg);
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.page-transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.page-transition-overlay::before {
+    content: '☯';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: var(--color-accent);
+    animation: transitionSpin 0.8s ease infinite;
+}
+
+@keyframes transitionSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { transform: translate(-50%, -50%) rotate(360deg); opacity: 0.5; }
+}
+
+body.page-leaving {
+    overflow: hidden;
+}
+
+body.page-entering {
+    overflow: hidden;
+}
+
+body.page-entering .page-transition-overlay {
+    opacity: 1;
+}
+
 /* Particle Canvas */
 #particles-canvas {
     position: fixed;
@@ -200,6 +247,7 @@ body {
 
 .hero-content {
     max-width: 700px;
+    margin: 0 auto;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -365,115 +413,15 @@ body {
     opacity: 0.15;
 }
 
-.yin-yang-container {
-    position: relative;
-    width: 400px;
-    height: 400px;
-}
-
-.yin-yang {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    animation: rotate 20s linear infinite;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 60px rgba(212, 175, 55, 0.2);
-}
-
-.yin {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    background: var(--color-bg);
-    left: 0;
-    border-radius: 100% 0 0 100%;
-}
-
-.yang {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    background: var(--color-accent);
-    right: 0;
-    border-radius: 0 100% 100% 0;
-}
-
-.yin-yang::before,
-    .yin-yang::after {
-    content: '';
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    border-radius: 50%;
-}
-
-.yin-yang::before {
-    background: var(--color-accent);
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.yin-yang::after {
-    background: var(--color-bg);
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.dot {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    z-index: 10;
-}
-
-.dot-yin {
-    background: var(--color-bg);
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.dot-yang {
-    background: var(--color-accent);
-    bottom: 25%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-}
-
-.orbit-ring {
-    position: absolute;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.ring-1 {
-    width: 280px;
-    height: 280px;
-    animation: rotate 30s linear infinite reverse;
-}
-
-.ring-2 {
-    width: 340px;
-    height: 340px;
-    border-color: rgba(212, 175, 55, 0.1);
-    animation: rotate 40s linear infinite;
-}
-
-.ring-3 {
-    width: 400px;
-    height: 400px;
-    border-color: rgba(212, 175, 55, 0.05);
-    animation: rotate 50s linear infinite reverse;
+.yin-yang-symbol {
+    font-size: 300px;
+    line-height: 1;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rotateSimple 20s linear infinite;
+    text-shadow: 0 0 60px rgba(212, 175, 55, 0.3);
 }
 
 /* Scroll Indicator */
@@ -897,8 +845,8 @@ body {
 
 .five-elements-diagram {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 .center-circle {
@@ -909,20 +857,20 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: var(--gradient-gold);
+    background: rgba(212, 175, 55, 0.15);
+    border: 2px solid rgba(212, 175, 55, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    color: var(--color-bg);
-    box-shadow: var(--glow-gold);
-    animation: pulse 3s infinite;
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    z-index: 5;
 }
 
 .element-node {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(212, 175, 55, 0.3);
@@ -930,21 +878,23 @@ body {
     align-items: center;
     justify-content: center;
     font-family: var(--font-chinese);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--color-accent);
     transition: var(--transition-smooth);
+    z-index: 10;
 }
 
 .element-node:hover {
     background: rgba(212, 175, 55, 0.2);
     box-shadow: var(--glow-gold);
+    transform: scale(1.15);
 }
 
-.wood-node { top: 0; left: 50%; transform: translateX(-50%); }
-.fire-node { top: 25%; right: 0; }
-.earth-node { bottom: 0; left: 50%; transform: translateX(-50%); }
-.metal-node { top: 25%; left: 0; }
-.water-node { bottom: 25%; left: 0; }
+.fire-node { top: 30px; left: 167px; }
+.earth-node { top: 125px; left: 295px; }
+.metal-node { top: 275px; left: 245px; }
+.water-node { top: 275px; left: 90px; }
+.wood-node { top: 125px; left: 40px; }
 
 .connections {
     position: absolute;
@@ -952,12 +902,23 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    color: rgba(212, 175, 55, 0.2);
+    z-index: 1;
 }
 
 .connection-line {
     stroke-dasharray: 5, 5;
     animation: dash 20s linear infinite;
+}
+
+.connection-line.generate {
+    stroke: rgba(212, 175, 55, 0.5);
+    stroke-width: 2;
+}
+
+.connection-line.overcome {
+    stroke: rgba(196, 30, 58, 0.4);
+    stroke-width: 1.5;
+    stroke-dasharray: 6, 4;
 }
 
 /* TCM Therapy Showcase Section */
@@ -1023,124 +984,61 @@ body {
     align-items: center;
 }
 
-.therapy-animation {
-    position: relative;
-    width: 400px;
-    height: 400px;
+.herbs-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
 }
 
-.meridian-lines {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-}
-
-.meridian {
-    position: absolute;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
-    border-radius: 2px;
-}
-
-.m-1 {
-    width: 200px;
-    height: 2px;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: meridianPulse 3s infinite;
-}
-
-.m-2 {
-    width: 2px;
-    height: 200px;
-    top: 50%;
-    left: 30%;
-    transform: translateY(-50%);
-    animation: meridianPulse 3s infinite 0.5s;
-}
-
-.m-3 {
-    width: 2px;
-    height: 200px;
-    top: 50%;
-    left: 70%;
-    transform: translateY(-50%);
-    animation: meridianPulse 3s infinite 1s;
-}
-
-.m-4 {
-    width: 200px;
-    height: 2px;
-    top: 70%;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: meridianPulse 3s infinite 1.5s;
-}
-
-.acupuncture-points {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-}
-
-.point {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: var(--color-accent);
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-    animation: pointGlow 2s infinite ease-in-out;
-}
-
-.p-1 { top: 25%; left: 35%; animation-delay: 0s; }
-.p-2 { top: 35%; left: 65%; animation-delay: 0.3s; }
-.p-3 { top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 0.6s; }
-.p-4 { top: 65%; left: 30%; animation-delay: 0.9s; }
-.p-5 { top: 70%; left: 60%; animation-delay: 1.2s; }
-
-.energy-flow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 250px;
-    height: 250px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 50%;
-    animation: energyRotate 10s linear infinite;
-}
-
-.energy-flow::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
+.herb-card {
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(212, 175, 55, 0.15);
-    border-radius: 50%;
-    animation: energyRotate 8s linear infinite reverse;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition-smooth);
+    cursor: pointer;
 }
 
-.energy-flow::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: energyPulse 3s infinite;
+.herb-card:hover {
+    background: rgba(212, 175, 55, 0.08);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+}
+
+.herb-icon {
+    width: 80px;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.herb-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.herb-info {
+    text-align: center;
+}
+
+.herb-info h4 {
+    font-family: var(--font-chinese);
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    margin-bottom: 4px;
+}
+
+.herb-info p {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    letter-spacing: 1px;
 }
 
 @keyframes meridianPulse {
@@ -1438,6 +1336,11 @@ body {
     to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
+@keyframes rotateSimple {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -1556,12 +1459,72 @@ body {
         --section-padding: 80px;
     }
     
+    body.nav-open {
+        overflow: hidden;
+    }
+    
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(10, 10, 15, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        z-index: 999;
+        border-left: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        opacity: 0;
+        transform: translateX(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
+    .nav-links.active li:nth-child(6) { transition-delay: 0.35s; }
+    
+    .nav-links a {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
     }
     
     .nav-toggle {
         display: flex;
+        z-index: 1001;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
     }
     
     .hero-stats {
@@ -1597,9 +1560,27 @@ body {
         text-align: center;
     }
     
-    .therapy-animation {
-        width: 300px;
-        height: 300px;
+    .herbs-showcase {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .herb-card {
+        padding: 15px;
+    }
+    
+    .herb-icon {
+        width: 60px;
+        height: 72px;
+    }
+    
+    .herb-info h4 {
+        font-size: 1rem;
+    }
+    
+    .herb-info p {
+        font-size: 0.75rem;
     }
 }
 
